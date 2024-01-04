@@ -1,12 +1,18 @@
 import numpy as np 
+import matplotlib as mpl
 import matplotlib.pyplot as plt 
 from scipy.integrate import odeint
+
+# possible fix for "non-interactive, cannot be shown" plt.show() error
+# must install and configure GUI for matplotlib backend
+# mpl.use('QtAgg')
+
 
 ## modelling the central dogma as ODEs
 # have an initial condition
 # define time
 y0 = [0,0]
-t = np.linspace(0,200, num=100)
+t = np.linspace(0,500, num=100)
 
 ## transcription = km - gammam * m
 k_m = 0.2
@@ -40,7 +46,7 @@ def simulation(variables, t, params):
     return([dmdt, dpdt])
 
 # using odeint
-y = odeint(sim, y0, t, args=(params,))
+y = odeint(simulation, y0, t, args=(params,))
 
 # plotting results
 f,ax = plt.subplots(1)
@@ -51,6 +57,11 @@ line2 = ax.plot(t,y[:,1], color="r", label="P")
 ax.set_ylabel("Abundance")
 ax.set_xlabel("Time")
 
-ax.legend(handles=[line1, line2])
+# ax.legend(handles=[line1, line2])
+# gives error
 
-plt.show()
+# plt.show()
+
+# using non interactive "agg" backend for now, results in image file
+mpl.pyplot.savefig('centraldogmaplot1') 
+
