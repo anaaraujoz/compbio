@@ -13,4 +13,11 @@ A centralized markdown for collecting notes as i follow Mike Saint-Antoine's you
 - rate of translation is:
   - dp/dt = (protein production * abundance of mrna) - (rate of degradation * protein abundance)
 
-### In Python
+### 2 gene interaction model
+Given two genes, where gene 1 G1 activates gene 2 G2, the rate of expression of both genes are such as follows:
+- for G1:
+  - dg1/dt = production of g1 - rate of degradation * quantity
+- for G2:
+  - dg2/dt = (hill function * max possible production of G2) - rate of degradation * quantity
+  - hill function = g1^n / c^n + g1^n (goes from 0 to 1)
+
