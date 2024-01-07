@@ -14,13 +14,15 @@ t = np.linspace(0, 150, num=75)
 
 # for G1
 g1 = geneclass.Gene(0.5, 0.1)
-g2 = geneclass.ActivatedGene(0.5, 0.05, 5, 5)
+g2 = geneclass.AffectedGene(0.5, 0.05, 5, 5)
 
 params = [g1, g2]
 
-def sim(variables, t, g1, g2):
+def simActivation(variables, t, g1, g2):
     G1 = variables[0]
     G2 = variables[1]
+
+    
 
     k1 = g1.getk()
     g1 = g1.getgamma()
@@ -33,7 +35,27 @@ def sim(variables, t, g1, g2):
 
     return ([dG1dt, dG2dt])
 
-yvec = odeint(sim, y0, t, args=(g1, g2,))
+def simRepression(variables, t, g1, g2):
+    G1 = variables[0]
+    G2 = variables[1]
+
+    
+    k1 = g1.getk()
+    g1 = g1.getgamma()
+    dG1dt = k1 - g1 * G1
+
+    #n = g2.getn()
+    #c = g2.getc()
+    # hill = pow(c, n)/ (pow(c,n) + pow(G1, n))
+    hill = float(g2.HillRepression(G1))
+    k2 = g2.getk()
+    g2 = g2.getgamma()
+    dG2dt = (hill * k2) - (g2 * G2)
+
+
+    return ([dG1dt, dG2dt])
+
+yvec = odeint(simRepression, y0, t, args=(g1, g2,))
 
 
 fig, ax = plt.subplots(1)
@@ -67,4 +89,5 @@ def update(frame):
 
 
 ani = animation.FuncAnimation(fig=fig, func=update, frames=75, interval=50)
-ani.save(filename="/home/anaaraujoz/compbio/twogene.gif", writer="pillow")
+#ani.save(filename="/home/anaaraujoz/compbio/twogene/activation.gif", writer="pillow")
+ani.save(filename="/home/anaaraujoz/compbio/twogene/repression.gif", writer="pillow")

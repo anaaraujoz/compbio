@@ -21,3 +21,7 @@ Given two genes, where gene 1 G1 activates gene 2 G2, the rate of expression of 
   - dg2/dt = (hill function * max possible production of G2) - rate of degradation * quantity
   - hill function = g1^n / c^n + g1^n (goes from 0 to 1)
 
+When a gene represses another gene, the hill function is:
+  - hill = c^n / c^n + g1^n
+
+## 3 Gene Model: negative feedback oscillator
