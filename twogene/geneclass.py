@@ -9,8 +9,12 @@ class Gene(object):
     def getgamma(self):
         return self.gamma
 
-    def getProductionRate(self, quantity):
-        return float(self.k - self.gamma * quantity)
+    def updateK(self, newk):
+        self.k = newk
+    
+    def updateGamma(self, newg):
+        self.gamma = newg
+
 
 
 class AffectedGene(Gene):
@@ -26,5 +30,9 @@ class AffectedGene(Gene):
     def getc(self):
         return self.c_cte
     
+    # TODO: add update functions for c_cte, and n_cte
+
     def HillRepression(self, G1):
         return pow(self.c_cte, self.n_cte)/ (pow(self.c_cte, self.n_cte) + pow(G1, self.n_cte))
+
+    # TODO: add HillActivation function
