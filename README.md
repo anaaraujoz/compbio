@@ -1,0 +1,1 @@
+Project repo for notes and code derived from Mike Saint-Antoine's youtube series, Computational Biology with Python, found at [https://www.youtube.com/playlist?list=PLWVKUEZ25V94kdT2Lh97KqB9MoLV9ZzmU].
