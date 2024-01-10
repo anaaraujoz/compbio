@@ -25,3 +25,5 @@ When a gene represses another gene, the hill function is:
   - hill = c^n / c^n + g1^n
 
 ## 3 Gene Model: negative feedback oscillator
+![Alt text](image.png)
+G1 activates G2, G2 activates G3, G3 represses G1

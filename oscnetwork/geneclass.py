@@ -30,6 +30,7 @@ class AffectedGene(Gene):
     def getc(self):
         return self.c_cte
     
+    # TODO: add update functions for c_cte, and n_cte
     def updateC(self, newC):
         self.c_cte = newC
 
@@ -39,6 +40,5 @@ class AffectedGene(Gene):
     def HillRepression(self, G1):
         return pow(self.c_cte, self.n_cte)/ (pow(self.c_cte, self.n_cte) + pow(G1, self.n_cte))
 
-    # TODO: test HillActivation function
     def HillActivation(self, G1):
         return pow(G1, self.n_cte) / pow(self.c_cte, self.n_cte) + pow(G1, self.n_cte)
