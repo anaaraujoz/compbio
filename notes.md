@@ -27,3 +27,16 @@ When a gene represses another gene, the hill function is:
 ## 3 Gene Model: negative feedback oscillator
 ![Alt text](image.png)
 G1 activates G2, G2 activates G3, G3 represses G1
+
+## Deterministic vs Stochastic models
+- Deterministic (all inputs are known, output is always the same)
+- Stochastic: probability based, output may differ
+
+## Gillespie Algorithm
+- also called SSA Method (Sthocastic Simulation Algorithm)
+for DNA transcription into mRNA:
+- two events:
+  - production of mRNA
+  - degradation of mRNA strands
+- naive calculation:
+  - divide in intervals, check for event given probability in every dt

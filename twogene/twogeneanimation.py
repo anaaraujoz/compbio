@@ -70,6 +70,8 @@ ax.legend(handles=[line1, line2])
 
 #plt.show()
 
+
+# sketches function over time
 def update(frame):
     # adapted from matplotlib documentation
 
